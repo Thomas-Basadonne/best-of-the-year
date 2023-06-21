@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:replace="fragments :: head"></th:block>
     <title>Best Songs</title>
 </head>
 <body>
 <h1>Best Songs</h1>
-<p th:text="${listSongs}"></p>
+<ul>
+    <li th:each="song : ${listSongs}"> [[${song.getTitle()}]] </li>
+</ul>
 
 <h3>Link utili</h3>
 <ul>
