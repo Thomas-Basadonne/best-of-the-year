@@ -4,11 +4,14 @@
     <th:block th:replace="fragments :: head"></th:block>
     <title>Best of the Year</title></head>
 <body>
-<h1>Best of the Year by <span th:text="${name}"></span></h1>
-<h3>Link utili</h3>
-<ul>
-    <li><a href="songs">Best of Songs</a></li>
-    <li><a href="movies">Best of Movies</a></li>
+<th:block th:replace="fragments :: header(page)"></th:block>
+<div class="text-center border m-5">
+<h1>Best of the Year by <span th:text="${name}" class="text-danger"></span></h1>
+<h3>Link utili:</h3>
+<ul class="list-group">
+    <li class="list-group-item"><a th:href="@{/songs}">Best of Songs</a></li>
+    <li class="list-group-item"><a th:href="@{/movies}">Best of Movies</a></li>
 </ul>
+</div>
 </body>
 </html>

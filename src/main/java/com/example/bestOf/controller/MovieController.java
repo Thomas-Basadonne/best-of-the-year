@@ -4,6 +4,7 @@ import com.example.bestOf.model.Movie;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -22,6 +23,26 @@ public class MovieController {
 //       }
         model.addAttribute("listMovies", getBestMovies());
         return "movies";
+    }
+
+    @GetMapping("/{id}")
+    public String movieDetail(
+            Model model,
+            @PathVariable int id
+    ) {
+        Movie movie = null;
+        for (Movie m : getBestMovies()) {
+            if(m.getId() == id) {
+                movie = m;
+            }
+        }
+
+        if(movie != null) {
+            model.addAttribute("movie", movie);
+            return "movieDetail";
+        } else {
+            return "redirect:/home";
+        }
     }
     private List<Movie> getBestMovies() {
         // lista di oggetti Movie rappresentanti i migliori film

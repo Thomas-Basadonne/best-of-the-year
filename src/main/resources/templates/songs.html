@@ -5,15 +5,15 @@
     <title>Best Songs</title>
 </head>
 <body>
+<th:block th:replace="fragments :: header('song')"></th:block>
+<div class="text-center border m-5">
+
 <h1>Best Songs</h1>
-<ul>
-    <li th:each="song : ${listSongs}"> [[${song.getTitle()}]] </li>
+<ul class="list-group">
+    <li th:each="song : ${listSongs}" class="list-group-item"> <a th:href="@{|/songs/${song.getId()}|}">[[${song.getTitle()}]]</a> </li>
+    <li class="list-group-item"><a th:href="@{/home}">Home</a></li>
 </ul>
 
-<h3>Link utili</h3>
-<ul>
-    <li><a href="home">Home</a></li>
-    <li><a href="movies">Best of Movies</a></li>
-</ul>
+</div>
 </body>
 </html>
